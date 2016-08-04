@@ -91,7 +91,9 @@ client_socket(Socket, Config) ->
 %% @doc Store configuration in ETS.
 -spec store_config( client_config() ) -> client_config().
 store_config(Config) ->
-  io:format("Getting to StoreConfig?"),
+  io:format("Getting to StoreConfig? ~n ~n ~n"),
+  io:format("What is conf: ~p", [Config]),
+
   ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
   Config.
 
