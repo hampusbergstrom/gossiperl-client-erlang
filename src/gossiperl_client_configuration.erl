@@ -95,7 +95,9 @@ store_config(Config) ->
 
   ets:new(?CONFIG_ETS, [set, named_table, public]),
   ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
-  Config.
+  Config,
+  Info = ets:lookup(?CONFIG_ETS, hamscheddd),
+  io:format("info: .... ~p ~n ~n ~n", [Info]).
 
 %% @doc Get configuration for an overlay.
 -spec for_overlay
