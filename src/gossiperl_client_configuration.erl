@@ -94,7 +94,7 @@ store_config(Config) ->
   io:format("What is conf: ~p~n ~n ~n~n ~n ~n", [Config]),
 
   ets:new(?CONFIG_ETS, [set, named_table, public]),
-%  ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
+  ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
   Config.
 
 %% @doc Get configuration for an overlay.
