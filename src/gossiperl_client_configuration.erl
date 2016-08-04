@@ -70,7 +70,7 @@ configure( Options ) when is_list( Options ) ->
                 listener = proplists:get_value( listener, Options, gossiperl_client_listener ),
                 thrift_window_size = proplists:get_value( thrift_window_size, Options, 16777216 ) },
                 io:format("Getting to PrepConfig?"),
-              { ok, store_config( PreparedConfig ) };
+              { ok, PreparedConfig };
             { error, { needs_integer, Option } } ->
               { error, { needs_integer, Option } }
           end;
@@ -93,9 +93,9 @@ client_socket(Socket, Config) ->
 store_config(Config) ->
   io:format("Getting to StoreConfig? ~n ~n ~n"),
   io:format("What is conf: ~p", [Config]),
-  ets:delete(?CONFIG_ETS),
-  ets:new(?CONFIG_ETS, [set, named_table, public]),
-  ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
+%  ets:delete(?CONFIG_ETS),
+%  ets:new(?CONFIG_ETS, [set, named_table, public]),
+%  ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
   Config.
 
 %% @doc Get configuration for an overlay.
