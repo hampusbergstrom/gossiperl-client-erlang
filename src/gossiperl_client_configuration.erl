@@ -93,7 +93,7 @@ store_config(Config) ->
   io:format("Getting to StoreConfig? ~n ~n ~n"),
   io:format("What is conf: ~p~n ~n ~n~n ~n ~n", [Config]),
 
-  ets:new(?CONFIG_ETS, [set, named_table, public]),
+%  ets:new(?CONFIG_ETS, [set, named_table, public]),
   ets:insert(?CONFIG_ETS, Config),
   Info = ets:lookup(?CONFIG_ETS, clientConfig),
   io:format("info: .... ~p ~n ~n ~n", [Info]).
