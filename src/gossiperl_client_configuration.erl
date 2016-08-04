@@ -94,7 +94,7 @@ store_config(Config) ->
   io:format("What is conf: ~p~n ~n ~n~n ~n ~n", [Config]),
 
   ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
-  Config,
+  Config.
   %Info = ets:lookup(?CONFIG_ETS, clientConfig),
   %io:format("info: .... ~p ~n ~n ~n", [Info]).
 
