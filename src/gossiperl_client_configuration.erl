@@ -93,7 +93,8 @@ client_socket(Socket, Config) ->
 store_config(Config) ->
   io:format("Getting to StoreConfig? ~n ~n ~n"),
   io:format("What is conf: ~p", [Config]),
-
+  ets:delete(?CONFIG_ETS),
+  ets:new(?CONFIG_ETS, [set, named_table, public]),
   ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
   Config.
 
