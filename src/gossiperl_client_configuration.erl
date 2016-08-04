@@ -92,10 +92,9 @@ client_socket(Socket, Config) ->
 store_config(Config) ->
   io:format("Getting to StoreConfig? ~n ~n ~n"),
   io:format("What is conf: ~p~n ~n ~n~n ~n ~n", [Config]),
-%  ets:delete(?CONFIG_ETS),
-  Bool = ets:new(?CONFIG_ETS, [set, named_table, public]),
-  Table = ets:lookup(?CONFIG_ETS, hamscheddd),
-  io:format("info::::?????? ~p ~p", [Bool], [Table]),
+
+  ets:new(?CONFIG_ETS, [set, named_table, public]),
+  io:format("info::::?????? ~p ~p", [Bool]),
 %  ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
   Config.
 
