@@ -69,8 +69,8 @@ configure( Options ) when is_list( Options ) ->
                   encryption = list_to_atom(binary_to_list(<<"encryption_", OverlayName/binary>>)) },
                 listener = proplists:get_value( listener, Options, gossiperl_client_listener ),
                 thrift_window_size = proplists:get_value( thrift_window_size, Options, 16777216 ) },
-                io:format("Getting to PrepConfig?"),
-              { ok, PreparedConfig };
+                io:format("Getting to PrepConfig? ~p ~n ~n", [PreparedConfig]),
+              { ok, store_config(PreparedConfig) };
             { error, { needs_integer, Option } } ->
               { error, { needs_integer, Option } }
           end;
