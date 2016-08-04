@@ -54,6 +54,7 @@ init([]) ->
 %% @doc Connect to an overlay with listener.
 -spec connect( [ { gossiperl_client_configuration:configuration_option(), term() } ] ) -> { ok, pid() } | { error, term() }.
 connect( Options ) when is_list( Options ) ->
+    io:format("Getting in to connect fun?"),
   case gossiperl_client_configuration:configure( Options ) of
     { ok, PreparedConfig } ->
       supervisor:start_child(?MODULE, {
