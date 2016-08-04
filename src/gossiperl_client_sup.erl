@@ -38,7 +38,7 @@ start_link() ->
   supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 init([]) ->
-  ets:new(?CONFIG_ETS, [set, named_table, public]),
+%  ets:new(?CONFIG_ETS, [set, named_table, public]),
   gossiperl_log:info("Gossiperl client application running."),
   {ok, {{one_for_all, 10, 10}, [{
     gossiperl_client_serialization,
@@ -58,7 +58,7 @@ connect( Options ) when is_list( Options ) ->
   case gossiperl_client_configuration:configure( Options ) of
     { ok, PreparedConfig } ->
       supervisor:start_child(?MODULE, {
-        ?CLIENT(PreparedConfig),
+        PreparedConfig,
         {gossiperl_client_overlay_sup, start_link, [ PreparedConfig ]},
         permanent,
         1000,

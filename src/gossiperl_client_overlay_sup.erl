@@ -28,7 +28,8 @@
 
 %% @doc Start an overlay supervisor.
 start_link(Config) ->
-  supervisor:start_link({local, ?CLIENT(Config)}, ?MODULE, [Config]).
+  %supervisor:start_link({local, ?CLIENT(Config)}, ?MODULE, [Config]).
+  supervisor:start_link({local, Config}, ?MODULE, [Config]).
 
 %% @doc Initialize an overlay supervisor.
 init([Config]) ->
