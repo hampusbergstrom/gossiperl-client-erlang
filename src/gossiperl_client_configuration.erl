@@ -94,8 +94,8 @@ store_config(Config) ->
   io:format("What is conf: ~p~n ~n ~n~n ~n ~n", [Config]),
 %  NEW = ets:new(?CONFIG_ETS, [set, named_table, public]),
 %  io:format("NEW: ~p~n ~n ~n~n ~n ~n", [NEW]),
-%  ETS2 = ets:info(?CONFIG_ETS),
-%  io:format("ETS2: ~p ~n ~n", [ETS2]),
+  ETS2 = ets:info(?CONFIG_ETS),
+  io:format("ETS2: ~p ~n ~n", [ETS2]),
   ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
   Config.
   %Info = ets:lookup(?CONFIG_ETS, clientConfig),
