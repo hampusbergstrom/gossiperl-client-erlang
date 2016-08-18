@@ -30,9 +30,9 @@
           encryption :: atom() }).
 
 -record(clientConfig, {
-          overlay :: atom(),
-          port :: integer(),
+          overlay :: binary(),
           name :: binary(),
+          port :: integer(),
           secret :: binary(),
           symmetric_key :: binary(),
           overlay_port :: integer(),
