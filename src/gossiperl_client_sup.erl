@@ -38,9 +38,9 @@ start_link() ->
   supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 init([]) ->
-  ets:new(?CONFIG_ETS, [set, named_table, public]),
-  ETS = ets:info(?CONFIG_ETS),
-  io:format("ETS: ~p ~n ~n", [ETS]),
+%  ets:new(?CONFIG_ETS, [set, named_table, public]),
+%  ETS = ets:info(?CONFIG_ETS),
+%  io:format("ETS: ~p ~n ~n", [ETS]),
 
   gossiperl_log:info("Gossiperl client application running."),
   {ok, {{one_for_all, 10, 10}, [{
