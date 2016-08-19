@@ -76,7 +76,9 @@ store_config(Config) ->
   io:format("ETS2: ~p ~n ~n", [ETS2]),
 %  ets:new(?CONFIG_ETS, [set, named_table, public]),
   ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
-  Config.
+  Lookup = ets:lookup(?CONFIG_ETS, { Config#clientConfig.overlay}),
+  io:format("Lookup: ~p ~n ~n ~n ~n", [Lookup]),
+
   %Info = ets:lookup(?CONFIG_ETS, clientConfig),
   %io:format("info: .... ~p ~n ~n ~n", [Info]).
 
@@ -99,7 +101,7 @@ for_overlay(OverlayName) when is_binary(OverlayName) ->
 -spec remove_configuration( client_config() ) -> true.
 remove_configuration(Config) ->
   ets:delete(?CONFIG_ETS, Config#clientConfig.overlay).
-
+    
 %% @doc Validates configuration options, checks for required options.
 -spec validate_required( [ { configuration_option(), term() } ] ) -> ok | { error, { configuration_validation_error(), atom() } }.
 validate_required( Options ) when is_list(Options) ->
