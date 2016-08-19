@@ -40,7 +40,7 @@ connect( Options ) when is_list( Options ) ->
         io:format("Getting in to connect fun? OK------------- ~n ~n ~n"),
         
       supervisor:start_child(?MODULE, {
-        ?CLIENT(PreparedConfig),
+        client_hamsched,
         {gossiperl_client_overlay_sup, start_link, [ PreparedConfig ]},
         permanent,
         1000,
