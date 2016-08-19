@@ -77,10 +77,7 @@ store_config(Config) ->
 %  ets:new(?CONFIG_ETS, [set, named_table, public]),
   ets:insert(?CONFIG_ETS, { Config#clientConfig.overlay, Config }),
   Lookup = ets:lookup(?CONFIG_ETS, { Config#clientConfig.overlay}),
-  io:format("Lookup: ~p ~n ~n ~n ~n", [Lookup]),
-
-  %Info = ets:lookup(?CONFIG_ETS, clientConfig),
-  %io:format("info: .... ~p ~n ~n ~n", [Info]).
+  io:format("Lookup: ~p ~n ~n ~n ~n", [Lookup]).
 
 %% @doc Get configuration for an overlay.
 -spec for_overlay
