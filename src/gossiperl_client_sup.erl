@@ -17,8 +17,6 @@ start_link() ->
 
 init([]) ->
   ets:new(?CONFIG_ETS, [set, named_table, public]),
-  ETS = ets:info(?CONFIG_ETS),
-  io:format("ETS: ~p ~n ~n", [ETS]),
 
 %  gossiperl_log:info("Gossiperl client application running."),
   {ok, {{one_for_all, 10, 60}, [{
@@ -38,6 +36,7 @@ connect( Options ) when is_list( Options ) ->
     io:format("Getting in to connect fun?"),
   case gossiperl_client_configuration:configure( Options ) of
     { ok, PreparedConfig } ->
+    io:format("Getting in to connect fun? OK-------------"),
       supervisor:start_child(?MODULE, {
         ?CLIENT(PreparedConfig),
         {gossiperl_client_overlay_sup, start_link, [ PreparedConfig ]},
@@ -47,6 +46,7 @@ connect( Options ) when is_list( Options ) ->
         []
       });
     { error, Reason } ->
+    io:format("Getting in to connect fun? ERROR-------------"),
       {error, Reason}
   end.
 
