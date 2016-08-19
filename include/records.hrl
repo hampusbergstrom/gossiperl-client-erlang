@@ -10,7 +10,7 @@
           encryption :: atom() }).
 
 -record(clientConfig, {
-          overlay :: binary(),
+          overlay :: atom(),
           name :: binary(),
           port :: integer(),
           secret :: binary(),
