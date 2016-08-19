@@ -21,7 +21,7 @@
 -ifndef(_gossiperl_client_records_included).
 -define(_gossiperl_client_records_included, yeah).
 
--include_lib("gossiperl_core/include/gossiperl_types.hrl").
+-include_lib("../../gossiperl_core/include/gossiperl_types.hrl").
 
 -record(clientNames, {
           client :: atom(),
