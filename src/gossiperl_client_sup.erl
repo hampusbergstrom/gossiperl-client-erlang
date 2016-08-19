@@ -36,7 +36,9 @@ connect( Options ) when is_list( Options ) ->
     io:format("Getting in to connect fun?"),
   case gossiperl_client_configuration:configure( Options ) of
     { ok, PreparedConfig } ->
-    io:format("Getting in to connect fun? OK-------------"),
+        io:format("Getting in to connect fun? OK------------- ~n ~n ~n"),
+        io:format("Getting in to connect fun? ~p", [PreparedConfig]),
+
       supervisor:start_child(?MODULE, {
         ?CLIENT(PreparedConfig),
         {gossiperl_client_overlay_sup, start_link, [ PreparedConfig ]},
