@@ -31,6 +31,6 @@
               gossiperl_client_serialization,
               gossiperl_client_sup,
               gossiperl_types]},
-  {registered, gossiperl_client_sup},
+  {registered, [gossiperl_client_sup]},
   {applications, [kernel, stdlib, crypto, erlsha2, lager, thrift, uuid]},
   {mod, {gossiperl_client_app, []}}]}.
